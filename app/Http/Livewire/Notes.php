@@ -6,12 +6,13 @@ use Livewire\Component;
 use App\Models\Note;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Livewire\WithPagination;
 
 class Notes extends Component
 {
-    use AuthorizesRequests;
+    use AuthorizesRequests, WithPagination;
 
-    public $notes, $noteId, $title, $content, $recipient, $sendDate, $isPublished, $heartCount;
+    public $noteId, $title, $content, $recipient, $sendDate, $isPublished, $heartCount;
     public $createEditNote = false;
     protected $listeners = ['store', 'update', 'delete', 'increaseHeartCount'];
 
@@ -34,8 +35,6 @@ class Notes extends Component
             $this->sendDate = $note->send_date->format('Y-m-d');
             $this->isPublished = $note->is_published;
         }
-        
-        $this->notes = Auth()->user()->notes()->orderBy('id', 'DESC')->get();
     }
 
     public function store()
@@ -77,7 +76,7 @@ class Notes extends Component
                     <p>Sent from: '.$note->user->name.'</p>
                     <div class="flex justify-end mt-4 py-2">
                         <button class="bg-rose-400 hover:bg-rose-700 text-white font-bold py-2 px-4 flex items-center rounded" id="heartCountButton">
-                            <ion-icon name="heart"></ion-icon>&nbsp;'.$this->heartCount.'
+                            <i class="fa-regular fa-heart"></i>&nbsp;'.$this->heartCount.'
                         </button>
                     </div>
                 </div>',
@@ -143,6 +142,7 @@ class Notes extends Component
 
     public function render()
     {
-        return view('livewire.notes');
+        $notes = Auth()->user()->notes()->orderBy('id', 'DESC')->paginate(9);
+        return view('livewire.notes', ['notes' => $notes]);
     }
 }

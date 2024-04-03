@@ -20,26 +20,18 @@ policies, cron jobs and Laravel Mail.
 git clone git@github.com:janaina2jsantos/send_notes.git
 ```
 - Create a database named `sendnotes` or whatever name you prefer.
-- Run the migrations and the seeds.
+- Run the migrations and the seeders:
+```bash
+php artisan db:seed --class=UserSeeder
+
+```
+```bash
+php artisan db:seed --class=NoteSeeder
+
+```
+- Choose one of the records in the users table in order to access the dashboard.
 - Enjoy the project!
 
-
-
-
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
 
 ## License
 

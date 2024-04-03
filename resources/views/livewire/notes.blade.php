@@ -32,17 +32,20 @@
                                     <div class="flex justify-center items-center">
                                         <a href="{{ route('notes.edit', $note->id) }}">
                                             <div class="h-10 w-10 bg-gray-500 shadow-md text-white flex justify-center items-center mx-1 rounded-full hover:bg-blue-900 cursor-pointer">
-                                                <ion-icon name="create-outline"></ion-icon>
+                                                <i class="fa-solid fa-pen-to-square"></i>
                                             </div>
                                         </a>
                                         <div class="h-10 w-10 bg-gray-500 shadow-md text-white flex justify-center items-center mx-1 rounded-full hover:bg-blue-900 cursor-pointer" wire:click="deleteConfirm('{{ $note->id }}')">
-                                            <ion-icon name="trash-outline"></ion-icon>
+                                            <i class="fa-solid fa-trash-can"></i>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </x-card>
                     @endforeach
+                </div>
+                <div class="grid grid-cols-1 gap-4 px-12 py-4 md:grid-cols-3">
+                    {{ $notes->links() }}
                 </div>
             @endif
         @else

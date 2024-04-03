@@ -4684,7 +4684,7 @@ window.addEventListener('swal:fire', function (event) {
         // update the counter display in modal
         var heartCount = modalElement.querySelector('#heartCountButton');
         if (heartCount) {
-          heartCount.innerHTML = '<ion-icon name="heart"></ion-icon>&nbsp;' + event.detail.heartCount;
+          heartCount.innerHTML = '<i class="fa-regular fa-heart"></i>&nbsp;' + event.detail.heartCount;
         }
       });
     }
